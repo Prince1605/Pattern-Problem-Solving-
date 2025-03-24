@@ -4,21 +4,49 @@ using namespace std;
 
 
 
-vector<int> pairSum(vector<int> nums, int target){
+// vector<int> pairSum(vector<int> nums, int target){
 
-    vector<int> ans; 
-    int n=nums.size();
-    for (int  i = 0; i < n; i++)
-    {
-        for (int  j = i+1; j < n; j++)
-        {
-            if(nums[i]+nums[j]==target){
-                ans.push_back(nums[i]);
-                ans.push_back(nums[j]);
-                return ans;
-            }
-        }
+//     vector<int> ans; 
+//     int n=nums.size();
+//     for (int  i = 0; i < n; i++)
+//     {
+//         for (int  j = i+1; j < n; j++)
+//         {
+//             if(nums[i]+nums[j]==target){
+//                 ans.push_back(nums[i]);
+//                 ans.push_back(nums[j]);
+//                 return ans;
+//             }
+//         }
         
+//     }
+//     return ans;
+    
+
+// }
+
+// Usinf two pointer approach
+vector<int> pairSum(vector<int> nums, int target){
+// O(n) is the timecomplexity te
+    vector<int> ans;
+    
+    int n=nums.size();
+    int i=0, j=n-1;
+    while (i<j)
+    {
+        int pairSum=nums[i]+nums[j];
+        if(pairSum>target){
+            j--;
+        }
+        else if(pairSum<target){
+            i++;
+        }
+        else{
+            ans.push_back(nums[i]);
+            ans.push_back(nums[j]);
+
+            return ans;
+        }
     }
     return ans;
     
