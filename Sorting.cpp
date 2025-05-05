@@ -34,7 +34,23 @@ void selectionSort(int arr[] ,int n){
         swap(arr[i],arr[smallestIdx]);
     }
 }
+// Insertion sorting 
+// Insertion Sorting
+void insertionSort(int arr[], int n) {
+    for (int i = 1; i < n; i++) {
+        int curr = arr[i];      // current element uthaya
+        int prev = i - 1;       // uske pehle wale element se compare karna hai
 
+        // Jab tak prev index valid hai aur prev element bada hai current se
+        while (prev >= 0 && arr[prev] > curr) {
+            arr[prev + 1] = arr[prev];  // bade element ko ek step aage shift karo
+            prev--;                     // ab pichhle element pe jao
+        }
+
+        // Jab correct position mil jaaye, wahan current element daal do
+        arr[prev + 1] = curr;
+    }
+}
 
 int main(){
     int n=5;
@@ -42,6 +58,7 @@ int main(){
 
     // BubbleSort(arr,n);
     // selectionSort(arr,n);
+    insertionSort(arr,n);
     printArray(arr,n);
     return 0;
 }
